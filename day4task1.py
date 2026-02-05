@@ -5,18 +5,18 @@ class BankAccount:
 
     def deposit(self, amount):
         self.balance += amount
-        print("Deposited Amount: ₹", amount)
+        print("Deposited Amount:", amount)
 
     def withdraw(self, amount):
         if amount <= self.balance:
             self.balance -= amount
-            print("Withdrawn Amount: ₹", amount)
+            print("Withdrawn Amount:", amount)
         else:
             print("Insufficient balance")
 
     def display_balance(self):
         print("Account Holder:", self.account_holder)
-        print("Current Balance: ₹", self.balance)
+        print("Balance:", self.balance)
 
 
 class SavingsAccount(BankAccount):
@@ -27,7 +27,7 @@ class SavingsAccount(BankAccount):
     def add_interest(self):
         interest = self.balance * self.interest_rate / 100
         self.balance += interest
-        print("Interest Added: ₹", interest)
+        print("Interest Added:", interest)
 
 
 class CurrentAccount(BankAccount):
@@ -38,7 +38,7 @@ class CurrentAccount(BankAccount):
     def withdraw_with_overdraft(self, amount):
         if amount <= self.balance + self.overdraft_limit:
             self.balance -= amount
-            print("Withdrawn with Overdraft: ₹", amount)
+            print("Withdrawn with overdraft:", amount)
         else:
             print("Overdraft limit exceeded")
 
@@ -50,5 +50,6 @@ savings.withdraw(3000)
 savings.display_balance()
 
 current = CurrentAccount("Anusha", 3000, 2000)
-current.withdraw_with_overdraft(4500)
+current.deposit(1000)
+current.withdraw_with_overdraft(5000)
 current.display_balance()
